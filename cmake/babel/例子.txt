@@ -1,0 +1,69 @@
+ cmake_minimum_required (VERSION 3.4)
+
+ project (example)
+
+ set(CMAKE_CXX_STANDARD 14)
+
+ set(CMAKE_C_STANDARD 11)
+
+ 
+
+ include(cmake/platform.cmake)
+
+
+ 
+
+ set(EXAMPLE_SRC
+
+     main.cpp
+
+     )
+
+ 
+
+ if (IOS)
+
+     add_library(example STATIC ${EXAMPLE_SRC})
+
+ else()
+
+     add_library(example SHARED ${EXAMPLE_SRC})
+
+ endif()
+
+ target_link_libraries(example ${LUA_LIBRARY} ${TOLUA_LIBRARY})
+
+ install(TARGETS example DESTINATION lib)
+
+ 
+ 
+ 
+ 
+?android
+$ mkdir -p build/android/armeabi
+$ cd build/android/armeabi
+$ cmake ../../../ \
+    -DCMAKE_TOOLCHAIN_FILE=../../../engine_export/cmake/android.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DANDROID_ABI=armeabi \
+    -DANDROID_STL=gnustl_static \
+    -DANDROID_TOOLCHAIN_NAME=arm-linux-androideabi-4.9
+$ cmake --build .
+
+
+ ANDROID_ABI  可取值： armeabi/armeabi-v7a/x86/mips/armeabi-v7a with NEON/armeabi-v7a with VFPV3/armeabi-v6 with VFP/arm64-v8a/x86_64/mips64
+
+
+?ios
+$ mkdir -p build/ios
+$ cd build/ios
+$ cmake ../../ \
+    -DCMAKE_TOOLCHAIN_FILE=../../engine_export/cmake/ios.cmake \
+    -DIOS_PLATFORM=OS \
+    -DCMAKE_BUILD_TYPE=Release \
+    -GXcode
+$ cmake --build .
+
+
+编模拟器版本，可指定  IOS_PLATFORM  为 SIMULATOR 或 SIMULATOR64 。
+
