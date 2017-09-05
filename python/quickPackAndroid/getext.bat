@@ -1,0 +1,1 @@
+ pyinstaller --console --onefile --icon=icon.ico  quickPackAndroid.py 
