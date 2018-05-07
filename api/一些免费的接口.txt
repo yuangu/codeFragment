@@ -1,0 +1,4 @@
+//查询IP信息的接口
+http://ip.taobao.com/service/getIpInfo.php?ip=8.8.8.8
+//查询当前用户的IP
+http://httpbin.org/ip
