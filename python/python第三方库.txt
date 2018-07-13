@@ -1,4 +1,4 @@
-1. Peewee 一个简单、轻巧的 Python ORM。
+﻿1. Peewee 一个简单、轻巧的 Python ORM。
 2. xlrd  一个excel的操作库
 3. PIL  图像处理类库。安装方法 pip install Pillow
 4. PyCrypto  加密算法包。
@@ -6,3 +6,4 @@
 6. pysvn  一个操作svn的库
 7. paramiko python版的ssh实现
 8. requests 一个http客户端.(比python自带的urllib等好用)
+9. ItChat 一个微信机器人库   https://github.com/littlecodersh/ItChat
